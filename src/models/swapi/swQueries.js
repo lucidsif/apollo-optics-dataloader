@@ -9,6 +9,7 @@ import {
   } from 'graphql';
 
 import swType from './swType'
+import characterType from './characterType'
 import sw from './swSchema'
 
 export default {
@@ -20,5 +21,14 @@ export default {
       }
     },
     resolve: sw.getFilmById
+  },
+  character: {
+    type: characterType,
+    args: {
+      id: {
+        type: GraphQLID
+      }
+    },
+    resolve: sw.getCharacterById
   }
 }

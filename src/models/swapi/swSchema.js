@@ -25,3 +25,12 @@ module.exports.getFilmById = (root, {id}) => {
   .catch(e => console.log(e))
 
 }
+
+module.exports.getCharacterById = (root, {id}) => {
+  return axios.get(`http://swapi.co/api/people/${id}/`)
+  .then(function (res) {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(e => console.log(e))
+}

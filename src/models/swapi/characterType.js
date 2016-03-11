@@ -9,16 +9,10 @@ import {
  } from 'graphql'
 
 export default new GraphQLObjectType({
-  name: 'Film',
-  description: 'Film object from Star Wars API',
+  name: 'Character',
+  description: 'Character object from Star Wars API',
   fields: () => ({
-    _id: {
-      type: new GraphQLNonNull(GraphQLID)
-    },
-    title: {
-      type: GraphQLString
-    },
-    director: {
+    name: {
       type: GraphQLString
     }
   })

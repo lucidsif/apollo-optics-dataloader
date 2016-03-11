@@ -20,7 +20,8 @@ let RootQuery = new GraphQLObjectType({
   name: 'Query',
   description: 'Realize Root Query',
   fields: () => ({
-    film: swQueries.film
+    film: swQueries.film,
+    character: swQueries.character
   })
 })
 
