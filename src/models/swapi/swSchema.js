@@ -80,6 +80,15 @@ module.exports.getCharacterById = (root, {id}) => {
   .catch(e => console.log(e))
 }
 
+module.exports.getVehicleById = (root, {id}) => {
+  return axios.get(`http://swapi.co/api/vehicles/${id}/`)
+  .then(function (res) {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(e => console.log(e))
+}
+
 module.exports.getSpeciesById = (root, {id}) => {
   return axios.get(`http://swapi.co/api/species/${id}/`)
   .then(function (res) {

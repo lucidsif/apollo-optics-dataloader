@@ -21,7 +21,10 @@ let RootQuery = new GraphQLObjectType({
   description: 'Realize Root Query',
   fields: () => ({
     film: swQueries.film,
-    character: swQueries.character
+    character: swQueries.character,
+    vehicle: swQueries.vehicle,
+    starship: swQueries.starship,
+    species: swQueries.species
   })
 })
 
