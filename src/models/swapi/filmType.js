@@ -13,7 +13,7 @@ export default new GraphQLObjectType({
   description: 'Film object from Star Wars API',
   fields: () => ({
     _id: {
-      type: new GraphQLNonNull(GraphQLID)
+      type: GraphQLID
     },
     title: {
       type: GraphQLString
