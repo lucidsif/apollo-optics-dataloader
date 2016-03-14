@@ -16,6 +16,32 @@ module.exports.getFilms = (listOfFilms) => {
 //  })
 }
 
+module.exports.getSpecies = (ids) => {
+  return axios.all(ids.map(id => {
+    var url = Number.isInteger(id) ? `http://swapi.co/api/people/${id}/` : id;
+      return axios.get(url)
+        .then(res => res.data)
+        .catch(e => console.log(e))
+  }))
+}
+
+module.exports.getVehicles = (ids) => {
+  return axios.all(ids.map(id => {
+    var url = Number.isInteger(id) ? `http://swapi.co/api/vehicles/${id}/` : id;
+      return axios.get(url)
+        .then(res => res.data)
+        .catch(e => console.log(e))
+  }))
+}
+
+module.exports.getStarships = (ids) => {
+  return axios.all(ids.map(id => {
+    var url = Number.isInteger(id) ? `http://swapi.co/api/starships/${id}/` : id;
+      return axios.get(url)
+        .then(res => res.data)
+        .catch(e => console.log(e))
+  }))
+}
 
 module.exports.getFilmById = (root, {id}) => {
   /*
@@ -47,6 +73,24 @@ module.exports.getFilmById = (root, {id}) => {
 
 module.exports.getCharacterById = (root, {id}) => {
   return axios.get(`http://swapi.co/api/people/${id}/`)
+  .then(function (res) {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(e => console.log(e))
+}
+
+module.exports.getSpeciesById = (root, {id}) => {
+  return axios.get(`http://swapi.co/api/species/${id}/`)
+  .then(function (res) {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(e => console.log(e))
+}
+
+module.exports.getStarshipById = (root, {id}) => {
+  return axios.get(`http://swapi.co/api/starships/${id}/`)
   .then(function (res) {
     console.log(res.data);
     return res.data

@@ -9,6 +9,9 @@ import {
  } from 'graphql'
 
 import filmType from './filmType'
+import speciesType from './species'
+import vehicleType from './vehicle'
+import starshipType from './starship'
 import swSchema from './swSchema'
 
 var characterType = new GraphQLObjectType({
@@ -47,6 +50,24 @@ var characterType = new GraphQLObjectType({
       type: new GraphQLList(filmType),
       resolve: (character) => {
         return swSchema.getFilms(character.films)
+      }
+    },
+    species: {
+      type: new GraphQLList(speciesType),
+      resolve: (character) => {
+        return swSchema.getSpecies(character.species)
+      }
+    },
+    vehicles: {
+      type: new GraphQLList(vehicleType),
+      resolve: (character) => {
+        return swSchema.getVehicles(character.vehicles)
+      }
+    },
+    starships: {
+      type: new GraphQLList(starshipType),
+      resolve: (character) => {
+        return swSchema.getStarships(character.starships)
       }
     },
     created: {
