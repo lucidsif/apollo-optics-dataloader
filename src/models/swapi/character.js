@@ -48,6 +48,12 @@ var characterType = new GraphQLObjectType({
       resolve: (character) => {
         return swSchema.getFilms(character.films)
       }
+    },
+    created: {
+      type: GraphQLString
+    },
+    edited: {
+      type: GraphQLString
     }
   })
 });

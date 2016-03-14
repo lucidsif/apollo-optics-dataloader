@@ -7,7 +7,6 @@ module.exports.getFilms = (listOfFilms) => {
   var ids = listOfFilms;
 
 //  return new DataLoader(ids => {
-    console.log('in dataloader')
     return axios.all(ids.map(id => {
       var url = Number.isInteger(id) ? `http://swapi.co/api/films/${id}/` : id;
         return axios.get(url)
