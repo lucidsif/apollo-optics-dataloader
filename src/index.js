@@ -24,7 +24,8 @@ let RootQuery = new GraphQLObjectType({
     character: swQueries.character,
     vehicle: swQueries.vehicle,
     starship: swQueries.starship,
-    species: swQueries.species
+    species: swQueries.species,
+    planet: swQueries.planet
   })
 })
 

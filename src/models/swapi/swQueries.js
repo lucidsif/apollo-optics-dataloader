@@ -13,6 +13,7 @@ import character from './character'
 import species from './species'
 import vehicle from './vehicle'
 import starship from './starship'
+import planet from './planet'
 import sw from './swSchema'
 
 export default {
@@ -60,5 +61,14 @@ export default {
       }
     },
     resolve: sw.getStarshipById
+  },
+  planet: {
+    type: planet,
+    args: {
+      id: {
+        type: GraphQLID
+      }
+    },
+    resolve: sw.getPlanetById
   }
 }

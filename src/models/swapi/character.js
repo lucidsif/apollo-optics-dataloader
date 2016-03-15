@@ -12,6 +12,7 @@ import filmType from './filmType'
 import speciesType from './species'
 import vehicleType from './vehicle'
 import starshipType from './starship'
+import planetType from './planet'
 import swSchema from './swSchema'
 
 var characterType = new GraphQLObjectType({
@@ -44,7 +45,11 @@ var characterType = new GraphQLObjectType({
       type: GraphQLString
     },
     homeworld: {
-      type: GraphQLString
+      type: planetType,
+      resolve: (character) => {
+        console.log('ch: ' +character.homeworld)
+        return swSchema.getPlanetById(character.homeworld)
+      }
     },
     films: {
       type: new GraphQLList(filmType),
