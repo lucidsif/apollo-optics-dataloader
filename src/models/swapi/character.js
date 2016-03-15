@@ -48,7 +48,7 @@ var characterType = new GraphQLObjectType({
       type: planetType,
       resolve: (character) => {
         console.log('ch: ' +character.homeworld)
-        return swSchema.getPlanetById(character.homeworld)
+        return swSchema.getPlanet(character.homeworld)
       }
     },
     films: {

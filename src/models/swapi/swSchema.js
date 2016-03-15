@@ -103,7 +103,16 @@ module.exports.getStarshipById = (root, {id}) => {
   .catch(e => console.log(e))
 }
 
-module.exports.getPlanetById = (id) => {
+module.exports.getPlanetById = (root, {id}) => {
+  return axios.get(`http://swapi.co/api/planets/${id}/`)
+  .then(function (res) {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(e => console.log(e))
+}
+
+module.exports.getPlanet= (id) => {
   console.log(id);
   return axios.get(id)
   .then(function (res) {
