@@ -8,7 +8,7 @@ import {
   GraphQLID
  } from 'graphql'
 
-import filmType from './filmType'
+import filmType from './film'
 import speciesType from './species'
 import vehicleType from './vehicle'
 import starshipType from './starship'

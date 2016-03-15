@@ -8,7 +8,7 @@ import {
   GraphQLID
   } from 'graphql';
 
-import filmType from './filmType'
+import film from './film'
 import character from './character'
 import species from './species'
 import vehicle from './vehicle'
@@ -18,7 +18,7 @@ import sw from './swSchema'
 
 export default {
   film: {
-    type: filmType,
+    type: film,
     args: {
       id: {
         type: GraphQLID

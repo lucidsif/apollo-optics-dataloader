@@ -1,11 +1,7 @@
 var DataLoader = require('dataloader');
 import axios from 'axios'
 
-module.exports.getFilms = (listOfFilms) => {
-  //console.log('FILMS:::: ' +  JSON.stringify(listOfFilms));
-
-  var ids = listOfFilms;
-
+module.exports.getFilms = (ids) => {
 //  return new DataLoader(ids => {
     return axios.all(ids.map(id => {
       var url = Number.isInteger(id) ? `http://swapi.co/api/films/${id}/` : id;
