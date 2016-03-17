@@ -186,6 +186,13 @@ query {
 }
 ```
 
+### Timing API execution
+Line 45:
+console.time("DataLoader")
+
+Line 166:
+console.timeEnd("DataLoader")
+
 ### ToDo
 * console.time comparison
 * count number of saved API calls
