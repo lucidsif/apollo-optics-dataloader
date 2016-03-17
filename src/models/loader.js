@@ -15,9 +15,14 @@ module.exports = function () {
 
 function Film() {
   return new DataLoader(function (ids) {
+    console.log("ids: " + ids)
     return axios.all(ids.map(id => {
       var url = Number.isInteger(id) ? `http://swapi.co/api/films/${id}/` : id;
-      return axios.get(url).then(res => res.data);
+      //console.log('URL: ' +url)
+      return axios.get(url).then(function (res) {
+        //console.log(res.data)
+        return res.data
+      })
     }));
   });
 }

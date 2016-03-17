@@ -1,7 +1,12 @@
 // Import GraphQL and destructure for easy access
 import {
   GraphQLObjectType,
-  GraphQLSchema
+  GraphQLSchema,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLNonNull,
+  GraphQLList,
+  GraphQLID
  } from 'graphql'
 
 // Import express server
@@ -10,31 +15,99 @@ import express from 'express'
 // Import express-graphql an easy express integration of https://github.com/graphql/graphiql
 import graphqlHTTP from 'express-graphql'
 
-import loader from './models/loader'
+// Import loader (DataLoader
+var Loader = require('./models/loader')
 
-// Import GraphQL Queries
-import swQueries from './models/swapi/swQueries'
+import film from './models/swapi/film'
+import character from './models/swapi/character'
+import species from './models/swapi/species'
+import vehicle from './models/swapi/vehicle'
+import starship from './models/swapi/starship'
+import planet from './models/swapi/planet'
 
-// Setup GraphQL RootQuery
-let RootQuery = new GraphQLObjectType({
-  name: 'Query',
-  description: 'Realize Root Query',
-  fields: () => ({
-    film: swQueries.film,
-    character: swQueries.character,
-    vehicle: swQueries.vehicle,
-    starship: swQueries.starship,
-    species: swQueries.species,
-    planet: swQueries.planet
+var RootQuery = function (loader) {
+  return new GraphQLObjectType({
+    name: 'Query',
+    description: 'Realize Root Query',
+    fields: () => ({
+      film: {
+        type: film,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.film.load(Number(id))
+        //resolve: (...args) => console.log(args)
+      },
+      character: {
+        type: character,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.character.load(Number(id))
+      },
+      vehicle: {
+        type: vehicle,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.vehicle.load(Number(id))
+      },
+      starship: {
+        type: starship,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.starship.load(Number(id))
+      },
+      species: {
+        type: species,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.species.load(Number(id))
+      },
+      planet: {
+        type: planet,
+        args: {
+          id: {
+            type: GraphQLID
+          }
+        },
+        resolve: (root, {id}) => loader.planet.load(Number(id))
+      }
+    })
   })
-})
+}
 
-let schema = new GraphQLSchema({
-  query: RootQuery
-})
+
+var Schema = function (loader) {
+  return new GraphQLSchema({
+    query: RootQuery(loader)
+  })
+}
 
 var app = express()
-app.use('/graphql', graphqlHTTP({ schema: schema, graphiql: true }))
+
+app.use(function (req, res, next) {
+  req.loader = Loader()
+  next()
+})
+
+app.use('/graphql', graphqlHTTP(req => ({
+  schema: Schema(req.loader),
+  graphiql: true
+})))
+
 app.listen('3000')
 
 var status = {
