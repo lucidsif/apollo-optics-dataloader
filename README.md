@@ -9,6 +9,9 @@
 * Use of __ES6__ (but minimally)
 * Use GraphQL queries to make REST API calls using Facebook DataLoader so that the number of API requests is reduced to a minimum
 
+## SWAPI REST API
+This project makes use of the Star Wars REST API at http://swapi.co/ to demonstrate a GraphQL Server running on Express integrated with Facebook DataLoder to cache and reduce the number of API calls required to return JSON data.
+
 ## Installation
 
 #### ES6 / Node V4+
@@ -47,10 +50,8 @@ npm start
 npm prestart will run first, transpile the ES6 code and save to _dist_ folder. npm start will then run the code directly from the _dist_ folder
 
 
-## Running GraphQL Mutations & Queries
-This project makes use of the Star Wars REST API at http://swapi.co
-
-You can run these queries / mutations within GraphiQL, alternatively you can run them within a tool such as Postman. To do so ensure you POST the query / mutation in the body and set the content-type to GraphQL.
+## Running GraphQL Queries
+You can run these queries within GraphiQL, alternatively you can run them within a tool such as Postman. To do so ensure you POST the query / mutation in the body and set the content-type to GraphQL.
 
 #### Find a film by Id
 ```js
@@ -185,14 +186,3 @@ query {
   }
 }
 ```
-
-### Timing API execution
-Line 45:
-console.time("DataLoader")
-
-Line 166:
-console.timeEnd("DataLoader")
-
-### ToDo
-* console.time comparison
-* count number of saved API calls
