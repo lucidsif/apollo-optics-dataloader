@@ -122,6 +122,11 @@ query {
       terrain
       surface_water
       population
+      residents {
+        name
+        birth_year
+        gender
+      }
       created
       edited
     },
@@ -133,7 +138,16 @@ query {
       name,
       classification,
       designation,
-      language
+      language,
+      people {
+        name
+        birth_year
+        gender
+      },
+      films {
+        title
+        director
+      }
     }
     vehicles{
       name,
@@ -142,7 +156,13 @@ query {
       length,
       crew,
       passengers,
-      vehicle_class
+      vehicle_class,
+      pilots {
+        name
+      },
+      films {
+        title
+      }
     }
     starships{
       name,
@@ -152,7 +172,13 @@ query {
       crew,
       passengers,
       hyperdrive_rating,
-      starship_class
+      starship_class,
+      pilots {
+        name
+      },
+      films {
+        title
+      }
     }
     created,
     edited
@@ -161,4 +187,5 @@ query {
 ```
 
 ### ToDo
-* Add Type lookups
+* console.time comparison
+* count number of saved API calls
