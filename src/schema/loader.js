@@ -15,7 +15,7 @@ module.exports = function () {
 
 function Film() {
   return new DataLoader(function (ids) {
-    console.log("ids: " + ids)
+    //console.log("ids: " + ids)
     return axios.all(ids.map(id => {
       var url = Number.isInteger(id) ? `http://swapi.co/api/films/${id}/` : id;
       //console.log('URL: ' +url)

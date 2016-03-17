@@ -8,6 +8,9 @@ import {
   GraphQLID
  } from 'graphql'
 
+import characterType from './character'
+import filmType from './film'
+
 var planetType = new GraphQLObjectType({
   name: 'Planet',
   description: 'Planet object from Star Wars API',
@@ -40,18 +43,14 @@ var planetType = new GraphQLObjectType({
     population: {
       type: GraphQLString
     },
-    // residents: {
-    //   type: new GraphQLList(characterType),
-    //   resolve: (species) => {
-    //     return swSchema.getCharacters(species.people)
-    //   }
-    // },
-    // films: {
-    //   type: new GraphQLList(filmType),
-    //   resolve: (character) => {
-    //     return swSchema.getFilms(character.films)
-    //   }
-    // },
+    residents: {
+      type: new GraphQLList(characterType),
+      resolve: (planet, root, {rootValue}) => rootValue.loader.character.loadMany(planet.residents)
+    },
+    films: {
+      type: new GraphQLList(filmType),
+      resolve: (planet, root, {rootValue}) => rootValue.loader.film.loadMany(planet.films)
+    },
     created: {
       type: GraphQLString
     },

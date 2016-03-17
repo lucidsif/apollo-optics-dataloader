@@ -8,6 +8,9 @@ import {
   GraphQLID
  } from 'graphql'
 
+import characterType from './character'
+import filmType from './film'
+
 var vehicleType = new GraphQLObjectType({
   name: 'Vehicle',
   description: 'Vehicle object from Star Wars API',
@@ -46,18 +49,14 @@ var vehicleType = new GraphQLObjectType({
     vehicle_class: {
       type: GraphQLString
     },
-    // pilots: {
-    //   type: new GraphQLList(characterType),
-    //   resolve: (species) => {
-    //     return swSchema.getCharacters(species.people)
-    //   }
-    // },
-    // films: {
-    //   type: new GraphQLList(filmType),
-    //   resolve: (character) => {
-    //     return swSchema.getFilms(character.films)
-    //   }
-    // },
+    pilots: {
+      type: new GraphQLList(characterType),
+      resolve: (vehicle, root, {rootValue}) => rootValue.loader.character.loadMany(vehicle.pilots)
+    },
+    films: {
+      type: new GraphQLList(filmType),
+      resolve: (vehicle, root, {rootValue}) => rootValue.loader.film.loadMany(vehicle.films)
+    },
     created: {
       type: GraphQLString
     },
