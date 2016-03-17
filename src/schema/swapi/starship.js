@@ -8,41 +8,51 @@ import {
   GraphQLID
  } from 'graphql'
 
-import swSchema from './swSchema'
-
-var planetType = new GraphQLObjectType({
-  name: 'Planet',
-  description: 'Planet object from Star Wars API',
+var starshipType = new GraphQLObjectType({
+  name: 'Starship',
+  description: 'Starship object from Star Wars API',
   fields: () => ({
     name: {
       type: GraphQLString,
       description: 'Name of the species'
     },
-    rotation_period: {
+    model: {
       type: GraphQLString
     },
-    orbital_period: {
+    manufacturer: {
       type: GraphQLString
     },
-    diameter: {
+    cost_in_credits: {
       type: GraphQLString
     },
-    climate: {
+    length: {
       type: GraphQLString
     },
-    gravity: {
+    max_atmosphering_speed: {
       type: GraphQLString
     },
-    terrain: {
+    crew: {
       type: GraphQLString
     },
-    surface_water: {
+    passengers: {
       type: GraphQLString
     },
-    population: {
+    cargo_capacity: {
       type: GraphQLString
     },
-    // residents: {
+    consumables: {
+      type: GraphQLString
+    },
+    hyperdrive_rating: {
+      type: GraphQLString
+    },
+    MGLT: {
+      type: GraphQLString
+    },
+    starship_class: {
+      type: GraphQLString
+    },
+    // pilots: {
     //   type: new GraphQLList(characterType),
     //   resolve: (species) => {
     //     return swSchema.getCharacters(species.people)
@@ -63,4 +73,4 @@ var planetType = new GraphQLObjectType({
   })
 });
 
-export default planetType;
+export default starshipType;

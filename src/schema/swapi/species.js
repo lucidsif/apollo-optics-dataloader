@@ -8,8 +8,6 @@ import {
   GraphQLID
  } from 'graphql'
 
-import swSchema from './swSchema'
-
 var speciesType = new GraphQLObjectType({
   name: 'Species',
   description: 'Species object from Star Wars API',

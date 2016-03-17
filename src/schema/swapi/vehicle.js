@@ -8,8 +8,6 @@ import {
   GraphQLID
  } from 'graphql'
 
-import swSchema from './swSchema'
-
 var vehicleType = new GraphQLObjectType({
   name: 'Vehicle',
   description: 'Vehicle object from Star Wars API',

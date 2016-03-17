@@ -16,14 +16,14 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 
 // Import loader (DataLoader
-var Loader = require('./models/loader')
+var Loader = require('./schema/loader')
 
-import film from './models/swapi/film'
-import character from './models/swapi/character'
-import species from './models/swapi/species'
-import vehicle from './models/swapi/vehicle'
-import starship from './models/swapi/starship'
-import planet from './models/swapi/planet'
+import film from './schema/swapi/film'
+import character from './schema/swapi/character'
+import species from './schema/swapi/species'
+import vehicle from './schema/swapi/vehicle'
+import starship from './schema/swapi/starship'
+import planet from './schema/swapi/planet'
 
 var RootQuery = function (loader) {
   return new GraphQLObjectType({
@@ -37,7 +37,7 @@ var RootQuery = function (loader) {
             type: GraphQLID
           }
         },
-        resolve: (root, {id}) => loader.film.load(Number(id))
+        resolve: (root, {id}, loader) => loader.film.load(Number(id))
         //resolve: (...args) => console.log(args)
       },
       character: {
@@ -105,6 +105,7 @@ app.use(function (req, res, next) {
 
 app.use('/graphql', graphqlHTTP(req => ({
   schema: Schema(req.loader),
+  rootValue: { loader: req.loader },
   graphiql: true
 })))
 

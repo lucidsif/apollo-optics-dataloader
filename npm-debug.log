@@ -7,32 +7,30 @@
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info prestart graphql-loader@1.0.0
 6 verbose unsafe-perm in lifecycle true
-7 info start graphql-loader@1.0.0
-8 verbose unsafe-perm in lifecycle true
-9 info graphql-loader@1.0.0 Failed to exec start script
-10 verbose stack Error: graphql-loader@1.0.0 start: ` node dist/index.js`
-10 verbose stack Exit status 1
-10 verbose stack     at EventEmitter.<anonymous> (/Users/applification/.nvm/versions/node/v0.12.10/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
-10 verbose stack     at EventEmitter.emit (events.js:110:17)
-10 verbose stack     at ChildProcess.<anonymous> (/Users/applification/.nvm/versions/node/v0.12.10/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-10 verbose stack     at ChildProcess.emit (events.js:110:17)
-10 verbose stack     at maybeClose (child_process.js:1016:16)
-10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1088:5)
-11 verbose pkgid graphql-loader@1.0.0
-12 verbose cwd /Users/applification/API/graphql-loader
-13 error Darwin 15.3.0
-14 error argv "/Users/applification/.nvm/versions/node/v0.12.10/bin/node" "/Users/applification/.nvm/versions/node/v0.12.10/bin/npm" "start"
-15 error node v0.12.10
-16 error npm  v2.14.9
-17 error code ELIFECYCLE
-18 error graphql-loader@1.0.0 start: ` node dist/index.js`
-18 error Exit status 1
-19 error Failed at the graphql-loader@1.0.0 start script ' node dist/index.js'.
-19 error This is most likely a problem with the graphql-loader package,
-19 error not with npm itself.
-19 error Tell the author that this fails on your system:
-19 error      node dist/index.js
-19 error You can get their info via:
-19 error     npm owner ls graphql-loader
-19 error There is likely additional logging output above.
-20 verbose exit [ 1, true ]
+7 info graphql-loader@1.0.0 Failed to exec prestart script
+8 verbose stack Error: graphql-loader@1.0.0 prestart: `babel src --out-dir dist`
+8 verbose stack Exit status 1
+8 verbose stack     at EventEmitter.<anonymous> (/Users/applification/.nvm/versions/node/v0.12.10/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+8 verbose stack     at EventEmitter.emit (events.js:110:17)
+8 verbose stack     at ChildProcess.<anonymous> (/Users/applification/.nvm/versions/node/v0.12.10/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+8 verbose stack     at ChildProcess.emit (events.js:110:17)
+8 verbose stack     at maybeClose (child_process.js:1016:16)
+8 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1088:5)
+9 verbose pkgid graphql-loader@1.0.0
+10 verbose cwd /Users/applification/API/graphql-loader
+11 error Darwin 15.3.0
+12 error argv "/Users/applification/.nvm/versions/node/v0.12.10/bin/node" "/Users/applification/.nvm/versions/node/v0.12.10/bin/npm" "start"
+13 error node v0.12.10
+14 error npm  v2.14.9
+15 error code ELIFECYCLE
+16 error graphql-loader@1.0.0 prestart: `babel src --out-dir dist`
+16 error Exit status 1
+17 error Failed at the graphql-loader@1.0.0 prestart script 'babel src --out-dir dist'.
+17 error This is most likely a problem with the graphql-loader package,
+17 error not with npm itself.
+17 error Tell the author that this fails on your system:
+17 error     babel src --out-dir dist
+17 error You can get their info via:
+17 error     npm owner ls graphql-loader
+17 error There is likely additional logging output above.
+18 verbose exit [ 1, true ]
