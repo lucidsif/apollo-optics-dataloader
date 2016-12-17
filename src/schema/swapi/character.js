@@ -8,11 +8,11 @@ import {
   GraphQLID
  } from 'graphql'
 
-import filmType from './film'
-import speciesType from './species'
-import vehicleType from './vehicle'
+//import filmType from './film'
+//import speciesType from './species'
+//import vehicleType from './vehicle'
 import starshipType from './starship'
-import planetType from './planet'
+//import planetType from './planet'
 
 var characterType = new GraphQLObjectType({
   name: 'Character',
@@ -42,22 +42,6 @@ var characterType = new GraphQLObjectType({
     },
     gender: {
       type: GraphQLString
-    },
-    homeworld: {
-      type: planetType,
-      resolve: (character, root, {rootValue}) => rootValue.loader.planet.load(character.homeworld)
-    },
-    films: {
-      type: new GraphQLList(filmType),
-      resolve: (character, root, {rootValue}) => rootValue.loader.film.loadMany(character.films)
-    },
-    species: {
-      type: new GraphQLList(speciesType),
-      resolve: (character, root, {rootValue}) => rootValue.loader.species.loadMany(character.species)
-    },
-    vehicles: {
-      type: new GraphQLList(vehicleType),
-      resolve: (character, root, {rootValue}) => rootValue.loader.vehicle.loadMany(character.vehicles)
     },
     starships: {
       type: new GraphQLList(starshipType),

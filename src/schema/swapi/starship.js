@@ -9,7 +9,7 @@ import {
  } from 'graphql'
 
 import characterType from './character'
-import filmType from './film'
+//import filmType from './film'
 
 var starshipType = new GraphQLObjectType({
   name: 'Starship',
@@ -58,10 +58,6 @@ var starshipType = new GraphQLObjectType({
     pilots: {
       type: new GraphQLList(characterType),
       resolve: (starship, root, {rootValue}) => rootValue.loader.character.loadMany(starship.pilots)
-    },
-    films: {
-      type: new GraphQLList(filmType),
-      resolve: (starship, root, {rootValue}) => rootValue.loader.film.loadMany(starship.films)
     },
     created: {
       type: GraphQLString

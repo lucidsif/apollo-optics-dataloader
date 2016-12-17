@@ -3,7 +3,7 @@ import koaRouter from 'koa-router';////refactor
 import koaBody from 'koa-bodyparser';////refactor
 const mount = require('koa-mount'); // koa-mount@2.x
 const convert = require('koa-convert');
-//const graphqlHTTP = require('koa-graphql');
+const graphqlHTTP = require('koa-graphql');
 import { graphqlKoa } from 'graphql-server-koa';
 
 const app = new koa();
