@@ -49,31 +49,46 @@ You can run these queries within GraphiQL, alternatively you can run them within
 
 #### Find starship by Id
 ```js
-query {
-    starships(id:9){
-      name,
-      model,
-      cost_in_credits,
-      length,
-      crew,
-      passengers,
-      hyperdrive_rating,
-      starship_class,
-      pilots {
+query{
+  starship(id:10){
+    name
+    manufacturer
+    cost_in_credits
+    length
+    max_atmosphering_speed
+    crew
+    passengers
+    cargo_capacity
+    consumables
+    hyperdrive_rating
+    MGLT
+    starship_class
+    created
+    edited
+    pilots{
+      name
+      hair_color
+      skin_color
+      eye_color
+      birth_year
+      gender
+      starships {
         name
+        manufacturer
+        cost_in_credits
+        length
+        max_atmosphering_speed
+        crew
+        passengers
+        cargo_capacity
+        consumables
+        hyperdrive_rating
+        MGLT
+        starship_class
+        created
+        edited
       }
     }
-    created,
-    edited
-  }
-}
-```
-
-#### Find a character by Id
-```js
-query {
-  character(id:5) {
-    name
   }
 }
 ```
