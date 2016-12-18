@@ -1,48 +1,35 @@
-// Import GraphQL and destructure for easy access
-import {
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLNonNull,
-  GraphQLList,
-  GraphQLID
- } from 'graphql'
+import { merge } from 'lodash';
+import { schema as Character , resolvers as characterResolvers } from './schema/swapi/character';
+import { schema as Starship, resolvers as starshipResolvers } from './schema/swapi/starship';
+import { makeExecutableSchema } from 'graphql-tools';
 
-//import film from './schema/swapi/film'
-import character from './schema/swapi/character'
-//import species from './schema/swapi/species'
-//import vehicle from './schema/swapi/vehicle'
-import starship from './schema/swapi/starship'
-//import planet from './schema/swapi/planet'
 
-// Setup GraphQL RootQuery
-export let RootQuery = new GraphQLObjectType({
-  name: 'Query',
-  description: 'Realize Root Query',
-  fields: () => ({
-    character: {
-      type: character,
-      args: {
-        id: {
-          type: GraphQLID
-        }
-      },
-      resolve: (root, {id}, {rootValue}) => rootValue.loader.character.load(Number(id))
+const RootSchema = [`
+type Query {
+  character(id: Int): Character
+  starship(id: Int): Starship
+}
+
+schema {
+  query: Query
+}
+`];
+
+const rootResolvers = {
+  Query: {
+    character(obj, args, context) {
+      return context.loader.character.load(Number(args.id));
     },
-    starship: {
-      type: starship,
-      args: {
-        id: {
-          type: GraphQLID
-        }
-      },
-      resolve: (root, {id}, {rootValue}) => rootValue.loader.starship.load(Number(id))
+    starship(obj, args, context){
+      return context.loader.starship.load(Number(args.id))
     }
-  })
-})
+  }
+}
 
-// Set up GraphQL Schema with our RootQuery and RootMutation
-//export let schema = new GraphQLSchema({
-//  query: RootQuery
-//})
+const Schema = [...RootSchema, ...Character, ...Starship];
+const resolvers = merge(rootResolvers, characterResolvers, starshipResolvers);
+
+export const MySchema = makeExecutableSchema({
+  typeDefs: Schema,
+  resolvers,
+});

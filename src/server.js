@@ -1,9 +1,6 @@
 const koa = require('koa');
-import koaRouter from 'koa-router';////refactor
-import koaBody from 'koa-bodyparser';////refactor
-//const mount = require('koa-mount'); // koa-mount@2.x
-//const convert = require('koa-convert');
-//const graphqlHTTP = require('koa-graphql');
+import koaRouter from 'koa-router';
+import koaBody from 'koa-bodyparser';
 import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
 
 const app = new koa();
@@ -12,17 +9,8 @@ const PORT = 3000;
 
 app.use(koaBody());
 
-//import { schema } from './index.js';
-import { MySchema } from './mainSchema';
+import { MySchema } from './index';
 var Loader = require('./schema/loader');
-
-/*
-app.use(mount('/graphql', convert(graphqlHTTP({
-  schema: schema,
-  rootValue: { loader: Loader() },
-  graphiql: true
-}))));
-*/
 
 router.post('/graphql', graphqlKoa({
   schema: MySchema,
