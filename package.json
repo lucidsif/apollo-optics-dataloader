@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
     "prestart": "babel src --out-dir dist",
-    "start": " node dist/index.js"
+    "start": " node dist/server.js"
   },
   "keywords": [],
   "author": "Dave Hudson <dave@applification.net> (http://applification.net)",
