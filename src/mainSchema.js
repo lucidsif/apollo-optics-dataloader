@@ -1,10 +1,10 @@
 import { merge } from 'lodash';
-import { schema as characterSchema , resolvers as characterResolvers } from './schema/swapi/characterSchema';
-import { schema as starshipSchema, resolvers as starshipResolvers } from './schema/swapi/starshipSchema';
+import { schema as Character , resolvers as characterResolvers } from './schema/swapi/characterSchema';
+import { schema as Starship, resolvers as starshipResolvers } from './schema/swapi/starshipSchema';
 import { makeExecutableSchema } from 'graphql-tools';
 
 
-const rootSchema = [`
+const RootSchema = [`
 type Query {
   character(id: Int): Character
   starship(id: Int): Starship
@@ -26,7 +26,7 @@ const rootResolvers = {
   }
 }
 
-const Schema = [...rootSchema, ...characterSchema, ...starshipSchema];
+const Schema = [...RootSchema, ...Character, ...Starship];
 const resolvers = merge(rootResolvers, characterResolvers, starshipResolvers);
 
 const executableSchema = makeExecutableSchema({
