@@ -46,17 +46,8 @@ npm prestart will run first, transpile the ES6 code and save to _dist_ folder. n
 ## Running GraphQL Queries
 You can run these queries within GraphiQL, alternatively you can run them within a tool such as Postman. To do so ensure you POST the query / mutation in the body and set the content-type to GraphQL.
 
-#### Find a starship by Id
-```js
-query {
-  starship(id:"5") {
-    name
-  }
-}
-```
 
-
-#### Find character by Id
+#### Find starship by Id
 ```js
 query {
     starships(id:9){
@@ -74,6 +65,15 @@ query {
     }
     created,
     edited
+  }
+}
+```
+
+#### Find a character by Id
+```js
+query {
+  character(id:"5") {
+    name
   }
 }
 ```
