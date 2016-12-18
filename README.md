@@ -3,7 +3,7 @@
  This is a Apollo/Koa2 version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
 
  Motivation:
-Complex querying with a rest api and building data driven React apps both suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with all backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
+Complex querying with a rest api and building data driven React apps both suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with any backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
 
  Key Features:
  - Graphql-Server-Koa - Apollo's production ready GraphQL server library for Koa  (can be easily changed to Apollo's Express, Connect, or Hapi GraphQL server library)
@@ -15,7 +15,7 @@ Complex querying with a rest api and building data driven React apps both suck, 
 
 
 ## SWAPI REST API
-This project makes use of the Star Wars REST API at http://swapi.co/ to demonstrate a Apollo Server running on Koa integrated with Facebook DataLoader to cache and reduce the number of API calls required to return JSON data. This port only has schemas for starships and characters.
+This project makes use of the Star Wars REST API at http://swapi.co/ to demonstrate a Apollo Server running on Koa integrated with Facebook's DataLoader. This port only has schemas for starships and characters.
 
 ## Installation
 
