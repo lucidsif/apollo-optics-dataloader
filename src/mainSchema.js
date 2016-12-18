@@ -29,9 +29,9 @@ const rootResolvers = {
 const Schema = [...RootSchema, ...Character, ...Starship];
 const resolvers = merge(rootResolvers, characterResolvers, starshipResolvers);
 
-const executableSchema = makeExecutableSchema({
+export const MySchema = makeExecutableSchema({
   typeDefs: Schema,
   resolvers,
 });
 
-export default executableSchema;
+//export default executableSchema;
