@@ -3,7 +3,7 @@
  This is a Apollo/Koa2 version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
 
  Motivation:
-Resource querying/filtering with a rest api and building data driven React apps suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with all backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
+Complex querying with a rest api and building data driven React apps both suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with all backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
 
  Key Features:
  Graphql-Server-Koa - Apollo's production ready GraphQL server library for Koa (can be easily changed to Apollo's Express, Connect, or Hapi GraphQL server)
