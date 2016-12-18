@@ -12,7 +12,8 @@ const PORT = 3000;
 
 app.use(koaBody());
 
-import { schema } from './index.js';
+//import { schema } from './index.js';
+import schema from './mainSchema';
 var Loader = require('./schema/loader');
 
 
