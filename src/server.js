@@ -16,13 +16,13 @@ app.use(koaBody());
 import schema from './mainSchema';
 var Loader = require('./schema/loader');
 
-
+/*
 app.use(mount('/graphql', convert(graphqlHTTP({
   schema: schema,
   rootValue: { loader: Loader() },
   graphiql: true
 }))));
-/*
+*/
 router.post('/graphql', graphqlKoa((ctx) => {
   return {
     schema: myGraphQLSchema,
@@ -31,7 +31,7 @@ router.post('/graphql', graphqlKoa((ctx) => {
  }));
 app.use(router.routes());
 app.use(router.allowedMethods());
-*/
+
 
 app.listen(PORT);
 

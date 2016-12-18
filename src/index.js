@@ -43,6 +43,6 @@ export let RootQuery = new GraphQLObjectType({
 })
 
 // Set up GraphQL Schema with our RootQuery and RootMutation
-export let schema = new GraphQLSchema({
-  query: RootQuery
-})
+//export let schema = new GraphQLSchema({
+//  query: RootQuery
+//})

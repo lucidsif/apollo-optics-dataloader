@@ -1,3 +1,5 @@
+import Starship from './starshipSchema';
+
 export const schema = [`
   type Character {
     name: String
@@ -15,7 +17,7 @@ export const schema = [`
   export const resolvers = {
     Character: {
       starships(character, root, {rootValue}){
-        return rootValue.loader.starship.loadMany(character.starships)
+        return rootValue.loader.starship.loadMany(character.starships);
       }
     }
   }

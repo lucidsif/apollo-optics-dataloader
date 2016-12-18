@@ -1,3 +1,5 @@
+import Character from './characterSchema';
+
 export const schema = [`
   type Starship {
     namemodel: String
@@ -16,12 +18,17 @@ export const schema = [`
     created: String
     edited: String
   }
-  `]
+  `];
 
   export const resolvers = {
-    Starship{
-      pilots(starship, root, {rootValue}){
+    Starship: {
+    pilots(starship, root, {rootValue}){
         return rootValue.loader.character.loadMany(starship.pilots)
-      }
-    }
+      },
+    },
   }
+
+
+
+
+  //export default () => [Starship, Character];

@@ -68,4 +68,4 @@ var starshipType = new GraphQLObjectType({
   })
 });
 
-export default starshipType;
+//export default starshipType;

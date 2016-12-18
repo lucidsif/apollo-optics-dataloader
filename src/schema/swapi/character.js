@@ -56,4 +56,4 @@ var characterType = new GraphQLObjectType({
   })
 });
 
-export default characterType;
+//export default characterType;
