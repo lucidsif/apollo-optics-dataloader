@@ -72,7 +72,7 @@ query {
 #### Find a character by Id
 ```js
 query {
-  character(id:"5") {
+  character(id:5) {
     name
   }
 }
