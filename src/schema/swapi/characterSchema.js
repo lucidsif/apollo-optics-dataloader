@@ -16,8 +16,9 @@ export const schema = [`
 
   export const resolvers = {
     Character: {
-      starships(character, root, {rootValue}){
-        return rootValue.loader.starship.loadMany(character.starships);
+      starships(character, args, context){
+        console.log('character starships resolver run');
+        return context.loader.starship.loadMany(character.starships);
       }
     }
   }

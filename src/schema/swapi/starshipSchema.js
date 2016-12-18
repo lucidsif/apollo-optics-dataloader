@@ -2,7 +2,7 @@ import Character from './characterSchema';
 
 export const schema = [`
   type Starship {
-    namemodel: String
+    name: String
     manufacturer: String
     cost_in_credits: String
     length: String
@@ -22,8 +22,9 @@ export const schema = [`
 
   export const resolvers = {
     Starship: {
-    pilots(starship, root, {rootValue}){
-        return rootValue.loader.character.loadMany(starship.pilots)
+    pilots(starship, args, context){
+      console.log('starship pilots resolver run');
+        return context.loader.character.loadMany(starship.pilots)
       },
     },
   }

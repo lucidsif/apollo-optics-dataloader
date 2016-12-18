@@ -27,7 +27,7 @@ app.use(mount('/graphql', convert(graphqlHTTP({
 router.post('/graphql', graphqlKoa({
   schema: MySchema,
   debug: true,
-  rootValue: {loader: Loader() }
+  context: {loader: Loader() }
  }));
 router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
 app.use(router.routes());

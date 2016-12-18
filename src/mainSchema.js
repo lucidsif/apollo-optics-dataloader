@@ -17,11 +17,11 @@ schema {
 
 const rootResolvers = {
   Query: {
-    character(root, {id}, {rootValue}) {
-      return rootValue.loader.character.load(Number(id));
+    character(obj, args, context) {
+      return context.loader.character.load(Number(args.id));
     },
-    starship(root, {id}, {rootValue}){
-      return rootValue.loader.starship.load(Number(id))
+    starship(obj, args, context){
+      return context.loader.starship.load(Number(args.id))
     }
   }
 }
