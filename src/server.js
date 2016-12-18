@@ -23,14 +23,13 @@ app.use(mount('/graphql', convert(graphqlHTTP({
   graphiql: true
 }))));
 */
-router.post('/graphql', graphqlKoa((ctx) => {
-  return {
-    debug: true,
-    schema: MySchema,
-    rootValue: { loader: Loader() }
-  };
+
+router.post('/graphql', graphqlKoa({
+  schema: MySchema,
+  debug: true,
+  rootValue: {loader: Loader() }
  }));
-router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
+router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
 app.use(router.routes());
 app.use(router.allowedMethods());
 
