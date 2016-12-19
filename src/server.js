@@ -1,32 +1,24 @@
-import koa from 'koa';
-import koaRouter from 'koa-router';
-import koaBody from 'koa-bodyparser';
-import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
+import express from 'express';
+import bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import OpticsAgent from 'optics-agent';
 import dotenv from 'dotenv';
 dotenv.config();
-
-const app = new koa();
-const router = new koaRouter();
-const PORT = 3000;
-
-import { MySchema } from './index';
 import Loader from './schema/loader';
+import { MySchema } from './index';
+const PORT = 2000;
 
-app.use(koaBody());
-app.use(router.routes());
-app.use(router.allowedMethods());
+const app = express();
+
+OpticsAgent.instrumentSchema(MySchema);
 app.use(OpticsAgent.middleware());
-
-OpticsAgent.instrumentSchema(MySchema)
-router.post('/graphql', graphqlKoa((ctx) => {
-  return {
+app.use('/graphql', bodyParser.json(), graphqlExpress(req => ({
   schema: MySchema,
   debug: true,
-  context: {loader: Loader(), opticsContext: OpticsAgent.context(ctx.request) }
-  };
- }));
-router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
+  context: {loader: Loader(), opticsContext: OpticsAgent.context(req) }
+})));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+
 
 
 app.listen(PORT);
@@ -34,10 +26,10 @@ app.listen(PORT);
 var status = {
   Koa: {
     "Online": true,
-    "Port": 3000
+    "Port": PORT
   },
   "GraphiQL": {
-    "url": "http://localhost:3000/graphiql"
+    "url": "http://localhost:5000/graphiql"
   }
 }
 
