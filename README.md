@@ -1,16 +1,16 @@
-# Apollo + GraphQL + Koa2 + Facebook DataLoader
+# Apollo + GraphQL + Optics + Facebook DataLoader
 
- This is a Apollo/Koa2 version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
+ This is a Apollo version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
 
  Motivation:
 Complex querying with a rest api and building data driven React apps both suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with any backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
 
  Key Features:
- - Graphql-Server-Koa - Apollo's production ready GraphQL server library for Koa  (can be easily changed to Apollo's Express, Connect, or Hapi GraphQL server library)
+ - Graphql-Server-Express - Apollo's production ready GraphQL server library for Koa  (can be easily changed to Apollo's Express, Connect, or Hapi GraphQL server library)
  - GraphQL-tools - Apollo's library to build GraphQL schemas with more ease and modularity.
  - GraphQL - Facebook's application level query language and engine
  - GraphiQL - Facebook's in-browser IDE to send queries/mutations
- - Koa2 - Generator based web framework with ES7's async/await
+ - Apollo Optics - Analytics for GraphQL
  - DataLoader - Facebook's batching/catching library to cache and reduce number of API calls
 
 

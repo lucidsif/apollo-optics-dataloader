@@ -4,6 +4,7 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import OpticsAgent from 'optics-agent';
 import dotenv from 'dotenv';
 dotenv.config();
+
 import Loader from './schema/loader';
 import { MySchema } from './index';
 const PORT = 2000;
@@ -19,17 +20,15 @@ app.use('/graphql', bodyParser.json(), graphqlExpress(req => ({
 })));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-
-
 app.listen(PORT);
 
 var status = {
-  Koa: {
+  Express: {
     "Online": true,
     "Port": PORT
   },
   "GraphiQL": {
-    "url": "http://localhost:5000/graphiql"
+    "url": "http://localhost:${PORT}/graphiql"
   }
 }
 
