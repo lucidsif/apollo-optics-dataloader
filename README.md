@@ -1,13 +1,13 @@
 # Apollo + GraphQL + Optics + Facebook DataLoader
 
- This is a Apollo version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
+ This is an Apollo version of the [graphql-loader](https://github.com/applification/graphql-loader) project on github.
 
  Motivation:
 Complex querying with a rest api and building data driven React apps both suck, so I decided to start by building this server side REST API wrapper. The nice thing about GraphQL is that it can be integrated with any backends (sql, nosql, rest api) pretty quickly and easily. I chose to use Apollo to build my GraphQL server since their tooling  makes writing production ready GraphQL servers quicker and more modular.
 
  Key Features:
- - Graphql-Server-Express - Apollo's production ready GraphQL server library for Koa  (can be easily changed to Apollo's Express, Connect, or Hapi GraphQL server library)
- - GraphQL-tools - Apollo's library to build GraphQL schemas with more ease and modularity.
+ - Graphql-Server-Express - Apollo's production ready GraphQL server library for Express
+ - GraphQL-tools - Apollo's library to build GraphQL schemas with more ease and modularity
  - GraphQL - Facebook's application level query language and engine
  - GraphiQL - Facebook's in-browser IDE to send queries/mutations
  - Apollo Optics - Analytics for GraphQL
@@ -15,7 +15,7 @@ Complex querying with a rest api and building data driven React apps both suck, 
 
 
 ## SWAPI REST API
-This project makes use of the Star Wars REST API at http://swapi.co/ to demonstrate a Apollo Server running on Koa integrated with Facebook's DataLoader. This port only has schemas for starships and characters.
+This project makes use of the Star Wars REST API at http://swapi.co/ to demonstrate a Apollo Server running on Express integrated with Facebook's DataLoader. This port only has schemas for starships and characters.
 
 ## Installation
 
@@ -27,6 +27,9 @@ Install with:
 ```js
 npm install
 ```
+
+#### API Key Registration
+Apply for your own api key on [the Apollo website](http://www.apollodata.com/optics) and simply set your `OPTICS_API_KEY` environment variable to your API key or set it with `OpticsAgent.configureAgent({ options })`.
 
 #### Run the project
 
