@@ -13,21 +13,20 @@ const PORT = 3000;
 import { MySchema } from './index';
 import Loader from './schema/loader';
 
-OpticsAgent.instrumentSchema(MySchema);
-
-router.post('/graphql', graphqlKoa((ctx) => {
-  return {
-  schema: MySchema,
-  debug: true,
-  context: {loader: Loader() }
-  };
- }));
-router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
-
 app.use(koaBody());
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(OpticsAgent.middleware());
+
+OpticsAgent.instrumentSchema(MySchema)
+router.post('/graphql', graphqlKoa((ctx) => {
+  return {
+  schema: MySchema,
+  debug: true,
+  context: {loader: Loader(), opticsContext: OpticsAgent.context(ctx.req) }
+  };
+ }));
+router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
 
 
 app.listen(PORT);
