@@ -1,25 +1,33 @@
-const koa = require('koa');
+import koa from 'koa';
 import koaRouter from 'koa-router';
 import koaBody from 'koa-bodyparser';
 import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
+import OpticsAgent from 'optics-agent';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = new koa();
 const router = new koaRouter();
 const PORT = 3000;
 
-app.use(koaBody());
-
 import { MySchema } from './index';
-var Loader = require('./schema/loader');
+import Loader from './schema/loader';
 
-router.post('/graphql', graphqlKoa({
+OpticsAgent.instrumentSchema(MySchema);
+
+router.post('/graphql', graphqlKoa((ctx) => {
+  return {
   schema: MySchema,
   debug: true,
   context: {loader: Loader() }
+  };
  }));
 router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));
+
+app.use(koaBody());
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(OpticsAgent.middleware());
 
 
 app.listen(PORT);
