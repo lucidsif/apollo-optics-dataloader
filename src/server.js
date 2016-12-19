@@ -23,7 +23,7 @@ router.post('/graphql', graphqlKoa((ctx) => {
   return {
   schema: MySchema,
   debug: true,
-  context: {loader: Loader(), opticsContext: OpticsAgent.context(ctx.req) }
+  context: {loader: Loader(), opticsContext: OpticsAgent.context(ctx.request) }
   };
  }));
 router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql', query: '' }));

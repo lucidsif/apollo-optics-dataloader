@@ -1,5 +1,7 @@
 var DataLoader = require('dataloader');
 var axios = require('axios');
+// TODO: Replace axios with fetch
+
 
 module.exports = function () {
   // ensure cached per request...
