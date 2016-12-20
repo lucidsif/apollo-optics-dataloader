@@ -1,6 +1,4 @@
-import Character from './character';
-
-export const schema = [`
+export const StarshipSchema = [`
   type Starship {
     name: String
     manufacturer: String
@@ -19,11 +17,3 @@ export const schema = [`
     edited: String
   }
   `];
-
-  export const resolvers = {
-    Starship: {
-    pilots(starship, args, context){
-        return context.loader.character.loadMany(starship.pilots)
-      },
-    },
-  }

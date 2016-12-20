@@ -5,7 +5,7 @@ import OpticsAgent from 'optics-agent';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import Loader from './schema/loader';
+import Loader from './connectors/loader';
 import { MySchema } from './index';
 const PORT = 2000;
 
